@@ -4,7 +4,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Quis Option</h1>
   </div>
-  <form action="/guru/quiz" method="post">
+  <form action="/guru/postQuiz" method="post">
     @csrf
       <div class="form-group">
         <label for="mapel">Mata Pelajaran</label>
@@ -22,13 +22,22 @@
       
       <div class="form-group">      
         <label for="materi">Pilih Paket Soal</label>
-        <select name="question" id="question" class="form-control">
+        <select name="quest_package" id="quest_package" class="form-control">
             <option value="">Pilih Paket Soal</option>
             @foreach($questions as $q)
                 <option value="{{$q->paket_soal}}">{{$q->paket_soal}}</option>
             @endforeach
-        </select>
-        
+        </select>        
+      </div>
+
+      <div class="form-group">      
+        <label for="date">Tanggal</label>
+        <input type="date" class="form-control  d-inline @error('end_time') is-invalid @enderror"  name="quiz_date" value="{{old('date')}}">
+        @error('date')
+        <div class="invalid-feedback">
+          Isian tidak boleh kosong    
+        </div>
+        @enderror
       </div>
   
       <div class="form-group">      
@@ -40,6 +49,8 @@
         </div>
         @enderror
       </div>
+
+
 
       <div class="form-group">      
         <label for="start_time">Waktu Selesai</label>
@@ -64,8 +75,8 @@
       
       <div class="form-group">      
         <label for="keterangan">Keterangan Quis</label>
-        <textarea name="keterangan_quis" class="form-control  d-inline @error('keterangan') is-invalid @enderror" id="keterangan" cols="30" rows="10"></textarea>
-        @error('keterangan')
+        <textarea name="quiz_desc" class="form-control  d-inline @error('quiz_desc') is-invalid @enderror" id="quiz_desc" cols="30" rows="10"></textarea>
+        @error('quiz_desc')
         <div class="invalid-feedback">
           Isian tidak boleh kosong    
         </div>

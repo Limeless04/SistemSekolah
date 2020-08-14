@@ -15,6 +15,7 @@ use App\Task;
 use App\Attendance;
 use App\Vidcall;
 use App\Quest;
+use App\Quiz;
 class TeacherController extends Controller
 {
     /**
@@ -209,8 +210,30 @@ class TeacherController extends Controller
         return view('guru.quiz',compact('quiz','questions'));
     }
 
-    public function postQuiz(){
-        
+    public function postQuiz(Request $request){
+        $request->validate([
+            'mapel'=>'required',
+            'kelas'=>'required',
+            'quest_package'=>'required',
+            'quiz_date'=>'required',
+            'start_time'=>'required',
+            'end_time'=>'required',
+            'duration'=>'required',
+            'quiz_desc'=>'required',
+            ]);
+
+
+            Quiz::create([
+                'mapel'=>$request->mapel,
+                'kelas'=>$request->kelas,
+                'paket_quiz'=>$request->quest_package,
+                'quiz_date'=>$request->quiz_date,
+                'start_time'=>$request->start_time,
+                'end_time'=>$request->end_time,
+                'duration'=>$request->duration,
+                'quiz_desc'=>$request->quiz_desc,
+            ]);
+            return redirect('/guru/belajar')->with('status','Aktifitas Pembelajaran Ditambahkan!');
     }
 
 

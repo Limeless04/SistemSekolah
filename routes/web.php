@@ -42,6 +42,7 @@ Route::post('/guru/postAbsensi', 'TeacherController@postAbsensi')->middleware('a
 Route::get('/guru/task', 'TeacherController@task')->middleware('auth:teacher');
 Route::post('/guru/task', 'TeacherController@postTask')->middleware('auth:teacher');
 Route::get('/guru/quiz', 'TeacherController@quiz')->middleware('auth:teacher');
+Route::post('/guru/postQuiz', 'TeacherController@postQuiz')->middleware('auth:teacher');
 Route::post('/guru/import_data', 'TeacherController@import_excel')->middleware('auth:teacher');
 
 
