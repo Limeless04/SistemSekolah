@@ -19,8 +19,8 @@ class CreateQuizs extends Migration
             $table->string('mapel');
             $table->string('kelas');
             $table->date('quiz_date');
-            $table->timestamp('time_start');
-            $table->timestamp('time_end')->nullable();
+            $table->dateTime('time_start');
+            $table->dateTime('time_end');
             $table->integer('duration');
             $table->string('quiz_desc')->nullable();
             $table->timestamps();

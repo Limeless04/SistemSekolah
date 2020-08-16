@@ -37,9 +37,9 @@
 
            <!-- Nav Item - Charts -->
            <li class="nav-item">
-            <a class="nav-link" href="/siswa/tugas">
+            <a class="nav-link" href="/siswa/check">
               <i class="fas fa-fw fa-chart-area"></i>
-              <span>Tugas</span></a>
+              <span>Check Aktifitas</span></a>
           </li>
     
           <!-- Nav Item - Tables -->
@@ -133,7 +133,6 @@
     
               <!-- Page Heading -->
               <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
               </div>
     
               <!-- Content Row -->

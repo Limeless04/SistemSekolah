@@ -117,7 +117,7 @@ class TeacherController extends Controller
 
     public function belajar()
     {
-        $kelas = Student::select('kelas')->get();
+        $kelas = Student::select('kelas')->groupBy('kelas')->get();
         $mapel = Mapel::select('mapel')->get();
         return view('guru.belajar',compact('kelas','mapel'));
 
@@ -194,6 +194,7 @@ class TeacherController extends Controller
             'keterangan'=>'required',
         ]);
         Task::create([
+            'guru'=>$request->guru,
             'mapel'=>$request->mapel,
             'kelas'=>$request->kelas,
             'materi'=>$request->materi,
@@ -206,7 +207,7 @@ class TeacherController extends Controller
 
     public function quiz(){
         $quiz = Session::get('sesiBelajar');
-        $questions = Quest::all();
+        $questions = Quest::select('paket_soal')->groupBy('paket_soal')->get();
         return view('guru.quiz',compact('quiz','questions'));
     }
 
@@ -228,8 +229,8 @@ class TeacherController extends Controller
                 'kelas'=>$request->kelas,
                 'paket_quiz'=>$request->quest_package,
                 'quiz_date'=>$request->quiz_date,
-                'start_time'=>$request->start_time,
-                'end_time'=>$request->end_time,
+                'time_start'=>$request->start_time,
+                'time_end'=>$request->end_time,
                 'duration'=>$request->duration,
                 'quiz_desc'=>$request->quiz_desc,
             ]);

@@ -18,6 +18,7 @@ class CreateTbTask extends Migration
             $table->string('mapel');
             $table->string('materi');
             $table->string('kelas');
+            $table->string('guru');
             $table->longtext('keterangan');
             $table->date('tgl_kumpul');
             $table->timestamps();

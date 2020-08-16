@@ -4,6 +4,10 @@
 
 <form action="/guru/task" method="post">
   @csrf
+  <div class="form-group">
+    <label for="mapel">Guru Pengampu</label>
+    <input type="text" class="form-control d-inline" id="guru" readonly name="guru" value="{{Auth::user()->nama_guru}}">   
+  </div>
     <div class="form-group">
       <label for="mapel">Mata Pelajaran</label>
       <input type="text" class="form-control d-inline" id="mapel" readonly name="mapel" value="{{$task['pilih_pelajaran']}}">   

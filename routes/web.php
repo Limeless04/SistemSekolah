@@ -46,9 +46,11 @@ Route::post('/guru/postQuiz', 'TeacherController@postQuiz')->middleware('auth:te
 Route::post('/guru/import_data', 'TeacherController@import_excel')->middleware('auth:teacher');
 
 
-Route::get('/admin','AdminController@index');
-Route::get('/admin/data_sekolah','AdminController@dataSekolah');
-Route::get('/admin/json','AdminController@json');
+// Route::get('/admin','AdminController@index');
+// Route::get('/admin/data_sekolah','AdminController@dataSekolah');
+// Route::get('/admin/json','AdminController@json');
+
+
 
 Route::get('/kepsek','HeadmasterController@index')->middleware('auth:headmaster');
 Route::get('/kepsek/data_guru','HeadmasterController@teachersList')->middleware('auth:headmaster');
@@ -61,3 +63,6 @@ Route::post('/kepsek/import_data','HeadmasterController@import_excel')->middlewa
 
 
 Route::get('/siswa','StudentController@index')->middleware('auth:student');
+Route::get('/siswa/check','StudentController@check')->middleware('auth:student');
+Route::get('/siswa/jsonTugas','StudentController@jsonTugas')->middleware('auth:student');
+Route::get('/siswa/jsonQuiz','StudentController@jsonQuiz')->middleware('auth:student');
